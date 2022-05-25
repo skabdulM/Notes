@@ -1,0 +1,43 @@
+<form [formGroup]="myForm1">
+  <mat-form-field class="input" [hideRequiredMarker]="hideRequired">
+    <h1 mat-dialog-title>
+      <textarea
+        required
+        matInput
+        #maxCharacter
+        maxlength="70"
+        cdkTextareaAutosize
+        cdkAutosizeMaxRows="4"
+        placeholder="Title"
+        [value]="data.title"
+        formControlName="title"
+      >
+      </textarea>
+    </h1>
+    <mat-hint align="end">{{ maxCharacter.value.length }}/70</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="input" [hideRequiredMarker]="hideRequired">
+    <mat-dialog-content style="overflow: hidden">
+      <textarea
+        required
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMaxRows="20"
+        placeholder="Description"
+        [value]="data.description"
+        formControlName="description"
+      ></textarea>
+    </mat-dialog-content>
+  </mat-form-field>
+  <mat-dialog-actions align="end">
+    <button [disabled]="myForm1.invalid" mat-button (click)="updateNote()">
+      <mat-icon> done </mat-icon>
+    </button>
+    <button mat-button (click)="close()">
+      <mat-icon> close </mat-icon>
+    </button>
+    <button mat-button (click)="delete()">
+      <mat-icon> delete </mat-icon>
+    </button>
+  </mat-dialog-actions>
+</form>
